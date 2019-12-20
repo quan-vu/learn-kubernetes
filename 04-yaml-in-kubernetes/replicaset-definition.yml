@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: myapp-replicaset
+  labels:
+    app: mywebsite
+    tier: frontend
+    type: frontend
+spec:
+  template: # copy pod definition here
+    metadata:
+      name: myapp-pod
+      labels:
+          app: myapp
+          type: frontend
+    spec:
+        containers:
+            - name: nginx-container
+              image: nginx
+  replicas: 3 # Number of load balacing instance
+  selector:
+    matchLabels:
+      type: frontend  # match with type in lables of template above
+      # app: myapp    # match with myapp in lables of template above
