@@ -19,6 +19,8 @@ kubeadm hỗ trợ các nền tảng là Ubuntu 16.04+, Debian 9+, CentOS 7, Fed
 
 Trong hướng dẫn này, chúng ta sử dụng phiên bản kubeadm 1.6 và chạy 3 máy ảo Ubuntu 16.04 với Virtualbox.
 
+[]()
+
 Cụm cluster có 3 nodes: 1 master và 2 worker nodes.
 
 
@@ -141,6 +143,13 @@ kubectl get nodes
 # kubenode1    NotReady   &lt;none&gt;   30s   v1.17.0</pre>
 ```
 
+### 3.4 Kubeadm reset
+
+To rest kubeadm run this command:
+
+```shell
+sudo kubeadm reset -f
+```
 
 
 
