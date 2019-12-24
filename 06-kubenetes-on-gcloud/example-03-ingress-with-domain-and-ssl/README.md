@@ -65,6 +65,20 @@ helloweb   *         203.0.x.x     80        4m
     ...
     ```
 
+4. Check your web site by open your domain on browser: http://example.com
+
+## Step 4: Setup SSL Certificate
+
+Just run this:
+
+```
+kubectl apply -f helloweb-ingress-ssl.yaml
+```
+
+Check your web site by open your domain on browser: https://example.com
+
+![](kubernetes-on-gcloud-with-ssl-letencrypt.png "Kubernetes-on-gcloud-with-ssl-letencrypt")
+
 ## Reference
 
 https://cloud.google.com/kubernetes-engine/docs/tutorials/configuring-domain-name-static-ip
