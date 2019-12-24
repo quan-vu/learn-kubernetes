@@ -1,0 +1,31 @@
+# To expose a web application on a static IP using Ingress, 
+# you need to deploy two resources:
+# 1. An Ingress configured with the service name and static IP annotation
+# 2. A Service with type:NodePort
+apiVersion: extensions/v1beta1
+kind: Ingress # 1
+metadata:
+  name: helloweb
+  annotations:
+    kubernetes.io/ingress.global-static-ip-name: helloweb-ip # 1 
+  labels:
+    app: hello
+spec:
+  backend:
+    serviceName: helloweb-backend
+    servicePort: 8080
+---
+apiVersion: v1
+kind: Service #2
+metadata:
+  name: helloweb-backend
+  labels:
+    app: hello
+spec:
+  type: NodePort #2
+  selector:
+    app: hello
+    tier: web
+  ports:
+  - port: 8080
+    targetPort: 8080
